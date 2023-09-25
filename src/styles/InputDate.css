@@ -1,0 +1,27 @@
+label {
+  color: #4d4a7b;
+  font-weight: 600;
+  font-size: 14px;
+}
+.my__input-date {
+  color: #dbdbff;
+  font-family: "Jost", sans-serif;
+  background-color: #f6f6f8;
+  border-color: #ededfe;
+  border-style: solid;
+  border-radius: 10px;
+  outline: none;
+  padding: 5px;
+  height: 33px;
+  width: 140px;
+  margin: 0 50px 10px 10px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url(../images/calendar.svg) no-repeat 90% 50%;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}

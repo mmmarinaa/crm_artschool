@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f9f9f9;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+#root {
+  background-color: #f9f9f9;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.content_page {
+  padding-left: 210px;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+h3 {
+  color: #4d4a7b;
+  margin-right: 30px;
+}

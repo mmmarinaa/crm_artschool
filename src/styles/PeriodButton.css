@@ -1,0 +1,16 @@
+.period__button {
+  background-color: #f6f6f8;
+  color: #4d4a7b;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  padding: 0 15px 3px;
+  border-radius: 10px;
+  border: 0;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+.active__period__button {
+  background-color: #4d4a7b;
+  color: #f6f6f8;
+}

@@ -1,0 +1,92 @@
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 200px;
+  background-color: #ffffff;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.logo span {
+  font-size: 20px;
+  padding-top: 5px;
+  padding-left: 5px;
+  color: #393e46;
+  flex: 80%;
+}
+.logo img {
+  width: 25px;
+  height: 25px;
+  flex: 10%;
+  display: grid;
+  place-items: center;
+}
+
+.sidebar_list {
+  position: absolute;
+  height: auto;
+  padding: 0;
+  width: 100%;
+  top: 25%;
+}
+
+.service_list {
+  position: absolute;
+  height: auto;
+  padding: 0;
+  width: 100%;
+  top: 85%;
+}
+
+.list_element {
+  width: 100%;
+  height: 50px;
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  color: #393e46;
+  justify-content: center;
+  align-items: center;
+}
+
+.list_element:hover {
+  cursor: pointer;
+  background-color: #f2f1ff;
+}
+
+#active {
+  background-color: #e4e2f8;
+  color: #8884c2;
+  border-left: 3px solid #4d4a7b;
+}
+
+#active #icon {
+  color: #706bb8;
+}
+
+.list_element #icon {
+  flex: 20%;
+  display: grid;
+  place-items: center;
+}
+
+.list_element #title {
+  flex: 70%;
+}
+
+.list_element #icon[name="help"] {
+  flex: 20%;
+  display: grid;
+  place-items: center;
+  color: #706bb8;
+}
+
+.list_element #title[name="help"] {
+  flex: 70%;
+  color: #8884c2;
+}

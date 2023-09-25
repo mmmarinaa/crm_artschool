@@ -1,0 +1,46 @@
+select {
+  appearance: none;
+  background-color: transparent;
+  padding: 5px;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.opt__present {
+  padding: 5px;
+  color: #5bae6d;
+  background: #cfefba;
+  border-radius: 5px;
+}
+
+.opt__absence {
+  padding: 5px;
+  color: #b33306;
+  background: #ffb195;
+  border-radius: 5px;
+}
+
+.opt__sick {
+  padding: 5px;
+  color: #b98708;
+  background: #fff1ce;
+  border-radius: 5px;
+}
+
+.opt__diff {
+  padding: 5px;
+  color: #7d7d7d;
+  background: #efefef;
+  border-radius: 5px;
+}
