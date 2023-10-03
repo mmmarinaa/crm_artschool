@@ -10,6 +10,7 @@ function Journal() {
       <div className="content_page">
         <header>
           <h3>Журнал</h3>
+          <InputSearch />
         </header>
         <Tabs />
       </div>

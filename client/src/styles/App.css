@@ -27,7 +27,9 @@ header {
   align-items: center;
   padding: 10px;
 }
+
 h3 {
   color: #4d4a7b;
   margin-right: 30px;
+  margin-top: 10px;
 }

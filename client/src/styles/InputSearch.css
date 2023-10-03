@@ -1,6 +1,9 @@
+.form__input {
+  margin-top: 10px;
+}
 .my_input-search {
   border: 1px solid #ededfe;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   height: 30px;
   padding: 5px;
 }
@@ -10,19 +13,23 @@
   border: 1px solid #8884c2;
 }
 
-.btn-search {
-  position: absolute;
+.btn_search {
   top: 0;
   right: 0px;
-  width: 42px;
-  height: 42px;
+  width: 30px;
+  vertical-align: bottom;
+  display: inline-flex;
+  height: 30px;
   border: none;
-  background: #7ba7ab;
+  background: #ededfe;
   border-radius: 0 5px 5px 0;
+  padding: 0;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-search:before {
+.btn_search:before {
   font-size: 16px;
   color: #f9f0da;
 }

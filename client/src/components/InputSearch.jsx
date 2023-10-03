@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/InputSearch.css";
+import { BiSearch } from "react-icons/bi";
 
 const InputSearch = () => {
   return (
@@ -7,7 +8,7 @@ const InputSearch = () => {
       <form>
         <input type="text" className="my_input-search" placeholder="Поиск..." />
         <button type="submit" className="btn_search">
-          Поиск
+          <BiSearch color="#8884c2" fontSize="16px" />
         </button>
       </form>
     </div>
