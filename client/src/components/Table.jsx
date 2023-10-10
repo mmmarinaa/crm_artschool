@@ -2,6 +2,7 @@ import React from "react";
 import Checkbox from "./Checkbox";
 import DropDownList from "./DropDownList";
 import "../styles/Table.css";
+import { DropdownData } from "./DropdownData";
 import { GoPencil } from "react-icons/go";
 import { BsCircleFill } from "react-icons/bs";
 

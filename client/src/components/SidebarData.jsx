@@ -6,17 +6,17 @@ import { VscGraph } from "react-icons/vsc";
 export const SidebarData = [
   {
     title: "Расписание",
-    icon: <RxCalendar />,
+    icon: <RxCalendar className="icon" />,
     link: "/schedule",
   },
   {
     title: "Журнал",
-    icon: <IoMdBook />,
+    icon: <IoMdBook className="icon" />,
     link: "/journal",
   },
   {
     title: "Отчеты",
-    icon: <VscGraph />,
+    icon: <VscGraph className="icon" />,
     link: "/reports",
   },
 ];

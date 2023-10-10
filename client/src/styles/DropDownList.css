@@ -1,46 +1,39 @@
-select {
-  appearance: none;
-  background-color: transparent;
-  padding: 5px;
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
-  border: none;
-  outline: none;
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
   width: 100%;
   height: 100%;
+  padding-top: 10px;
 }
 
-select::-ms-expand {
+.dropdown-list {
   display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  list-style-type: none;
+  border-radius: 0 0 10px 10px;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
+  width: 100%;
 }
 
-.opt__present {
+.dropdown-list li {
   padding: 5px;
-  color: #5bae6d;
-  background: #cfefba;
-  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 5px 10px;
+  border-radius: 20px;
 }
 
-.opt__absence {
-  padding: 5px;
-  color: #b33306;
-  background: #ffb195;
-  border-radius: 5px;
+.selected {
+  padding: 3px 0;
+  margin: 0px 10px;
+  border-radius: 20px;
 }
 
-.opt__sick {
-  padding: 5px;
-  color: #b98708;
-  background: #fff1ce;
-  border-radius: 5px;
-}
-
-.opt__diff {
-  padding: 5px;
-  color: #7d7d7d;
-  background: #efefef;
-  border-radius: 5px;
+.dropdown.show .dropdown-list {
+  display: block;
 }

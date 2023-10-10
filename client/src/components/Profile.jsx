@@ -1,14 +1,12 @@
 import React from "react";
 import "../styles/Profile.css";
-import profileLogo from "../images/person-circle.svg";
+import { CgProfile } from "react-icons/cg";
 
 const Profile = () => {
   return (
-    <div className="profile__place">
-      <div className="profile">
-        <span>Павлова Татьяна</span>
-        <img src={profileLogo} />
-      </div>
+    <div className="profile">
+      <span>Павлова Татьяна</span>
+      <CgProfile className="icon" />
     </div>
   );
 };

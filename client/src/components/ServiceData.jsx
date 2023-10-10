@@ -5,13 +5,13 @@ import { IoIosHelpCircleOutline } from "react-icons/io";
 export const ServiceData = [
   {
     title: "Настройки",
-    icon: <IoSettingsOutline />,
+    icon: <IoSettingsOutline className="icon" />,
     name: "settings",
     link: "/settings",
   },
   {
     title: "Помощь",
-    icon: <IoIosHelpCircleOutline />,
+    icon: <IoIosHelpCircleOutline className="icon" />,
     name: "help",
     link: "/help",
   },

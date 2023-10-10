@@ -34,7 +34,10 @@ th:last-child {
   border-right: none;
 }
 td {
-  padding: 10px 20px;
+  height: 50px;
+  padding: 0 20px;
+  text-align: center; /* Выравнивание по центру по горизонтали */
+  vertical-align: middle;
 }
 tr:nth-child(odd) {
   background: #f6f6f8;
@@ -42,8 +45,9 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background: #f3f2ff;
 }
-td:nth-child(2) {
-  padding: 0px;
+tr > td:not(:first-child) {
+  padding: 0;
+  /* Ваши стили для всех столбцов, кроме первого */
 }
 tr:last-child td:first-child {
   border-radius: 0 0 0 10px;
