@@ -38,9 +38,37 @@ try:
             sql_query = "SELECT hours FROM teacherworkload WHERE teacher_id = %s"
             cursor.execute(sql_query, (teacher[0],))
             teacher_workload = cursor.fetchall()
-            print(teacher_workload)
+
+            sql_query = "SELECT * FROM groups WHERE teacher_id = %s"
+            cursor.execute(sql_query, (teacher[0],))
+            teacher_groups = cursor.fetchall()
+
+            for group in teacher_groups:
+                sql_query = "SELECT subject_id, hours FROM syllabus WHERE program_id = %s"
+                cursor.execute(sql_query, (group[3],))
+                group_classes = cursor.fetchall()
+
+            while int(teacher_workload[0][0]) > 0 and subjects:
+                subjects = sorted(group_classes, key = lambda x:(x[1]), reverse=True)
+                
+                subject = subjects[0]
+
+
+
+                
+
+
+
 
         return schedule
+    
+    def is_available(classroom, time_slot, schedule):
+
+        for lesson in schedule:
+            if lesson["classroom"] == classroom and lesson["time_slot"] == time_slot:
+                return False 
+        return True
+
     
     if __name__ == "__main__":
         import random
