@@ -48,17 +48,10 @@ try:
                 cursor.execute(sql_query, (group[3],))
                 group_classes = cursor.fetchall()
 
-            while int(teacher_workload[0][0]) > 0 and subjects:
-                subjects = sorted(group_classes, key = lambda x:(x[1]), reverse=True)
+            # while int(teacher_workload[0][0]) > 0 and subjects:
+            #     subjects = sorted(group_classes, key = lambda x:(x[1]), reverse=True)
                 
-                subject = subjects[0]
-
-
-
-                
-
-
-
+            #     subject = subjects[0]        
 
         return schedule
     
