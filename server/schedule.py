@@ -1,5 +1,6 @@
 import psycopg2
 import traceback
+from datetime import datetime
 
 try:
     conn = psycopg2.connect(dbname='artschool', user='postgres', password='NASLEDNIKI', host='localhost')
@@ -13,7 +14,7 @@ try:
     cursor.execute("SELECT teacher_id, hours FROM teacherworkload")
     teachers_workload = cursor.fetchall()
 
-    cursor.execute("SELECT * FROM rooms")
+    cursor.execute("SELECT number FROM rooms")
     rooms = cursor.fetchall()
 
     cursor.execute("SELECT * FROM syllabus")
@@ -25,8 +26,11 @@ try:
     cursor.execute("SELECT * FROM days")
     days = cursor.fetchall()
 
-    cursor.execute("SELECT * FROM time")
-    time = cursor.fetchall()
+    cursor.execute("SELECT time FROM time WHERE type_id = 1")
+    morning_time = cursor.fetchall()
+
+    cursor.execute("SELECT time FROM time WHERE type_id = 2")
+    evening_time = cursor.fetchall()
 
     cursor.execute("SELECT * FROM training_programs")
     training_programs = cursor.fetchall()
@@ -47,11 +51,26 @@ try:
                 sql_query = "SELECT subject_id, hours FROM syllabus WHERE program_id = %s"
                 cursor.execute(sql_query, (group[3],))
                 group_classes = cursor.fetchall()
+            
 
-            # while int(teacher_workload[0][0]) > 0 and subjects:
-            #     subjects = sorted(group_classes, key = lambda x:(x[1]), reverse=True)
+            while int(teacher_workload[0][0]) > 0 and subjects:
+                subjects = sorted(group_classes, key = lambda x:(x[1]), reverse=True)
                 
-            #     subject = subjects[0]        
+                subject = subjects[0] 
+                available_classrooms = [c for c in rooms if is_available(c, morning_time)]
+                if not available_classrooms:
+                    available_classrooms = [c for c in rooms if is_available(c, evening_time)]   
+
+                if not available_classrooms:
+                    break    
+                
+                classroom = available_classrooms[0]
+
+                # Выбираем случайное время (утро или вечер)
+                if random.choice([True, False]):
+                    time_slot = random.choice(morning_time)
+                else:
+                    time_slot = random.choice(evening_time)
 
         return schedule
     
@@ -68,7 +87,7 @@ try:
 
 
         schedule = generate_schedule(
-            teachers, subjects, rooms, time, days, syllabus, teachers_workload, groups
+            teachers, subjects, rooms, morning_time, evening_time, days, syllabus, teachers_workload, groups
         )
 
 
