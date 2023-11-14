@@ -35,13 +35,30 @@ try:
     cursor.execute("SELECT * FROM training_programs")
     training_programs = cursor.fetchall()
 
+    def is_available(classroom, time_slot, schedule):
+
+        for lesson in schedule:
+            if lesson["classroom"] == classroom and lesson["time_slot"] == time_slot:
+                return False 
+        return True
+    
+    def is_teacher_available(teacher, time_slot, schedule):
+    # Проверка, свободен ли учитель в выбранное время
+        for lesson in schedule:
+            if lesson["teacher"] == teacher and lesson["time_slot"] == time_slot:
+                return False
+        return True
+
     def generate_schedule(teachers, subjects, rooms, morning_time, evening_time, days, sullabus, teachers_workload, groups):
         schedule = []
 
         for teacher in teachers:
             sql_query = "SELECT hours FROM teacherworkload WHERE teacher_id = %s"
             cursor.execute(sql_query, (teacher[0],))
-            teacher_workload = cursor.fetchall()
+            result = cursor.fetchall()
+
+            # Преобразовать список кортежей в массив чисел
+            teacher_workload = [row[0] for row in result]
 
             sql_query = "SELECT * FROM groups WHERE teacher_id = %s"
             cursor.execute(sql_query, (teacher[0],))
@@ -54,49 +71,53 @@ try:
                 cursor.execute(sql_query, (group[3],))
                 group_classes = cursor.fetchall()
             
-                i = 0
-                # while int(teacher_workload[0][0]) > 0 and subjects:
-                while i < 1:
-                    subjects = sorted(group_classes, key = lambda x:(x[1]), reverse=True)
+                for class_info in group_classes:
+                    subject_id, hours_per_week = class_info
+                    subject = next((subj for subj in subjects if subj[0] == subject_id), None)
+                    if not subject:
+                        continue
+
+                    for _ in range(hours_per_week):
+                        available_classrooms = [c for c in rooms if is_available(c, morning_time, schedule)]
+                        if not available_classrooms:
+                            available_classrooms = [c for c in rooms if is_available(c, evening_time, schedule)]
+
+                        if not available_classrooms:
+                            break
+
+                        classroom = random.choice(available_classrooms)
+
+                        if group[5] == 1:
+                            time_slot = random.choice(morning_time)
+                        else:
+                            time_slot = random.choice(evening_time)
+
+                        day = random.choice(days)
+
+                                            # Проверка, свободен ли учитель в выбранное время
+                        while not is_teacher_available(teacher[1], (day, time_slot), schedule):
+                            if group[5] == 1:
+                                time_slot = random.choice(morning_time)
+                            else:
+                                time_slot = random.choice(evening_time)
+                            day = random.choice(days)
+                        lesson = {
+                            "teacher": teacher[1],
+                            "subject": subject[1],
+                            "classroom": classroom,
+                            "time_slot": (day, time_slot),
+                            "group": group[1]
+                        }
+                        schedule.append(lesson)
+
+                        print(lesson)
+
+                        # Уменьшение нагрузки учителя
+                        teacher_workload[0] -= 1   
                     
-                    subject = subjects[0] 
-                    available_classrooms = [c for c in rooms if is_available(c, morning_time, schedule)]
-                    if not available_classrooms:
-                        available_classrooms = [c for c in rooms if is_available(c, evening_time, schedule)]   
-
-                    if not available_classrooms:
-                        break    
-                    
-                    classroom = available_classrooms[0]
-
-                    if group[5] == 1:
-                        time_slot = random.choice(morning_time)
-                    else:
-                        time_slot = random.choice(evening_time)
-                    
-                    lesson = {
-                        "teacher": teacher[1],
-                        "subject": subject,
-                        "classroom": classroom,
-                        "time_slot": time_slot,
-                    }
-                    schedule.append(lesson)
-
-                    print(lesson)
-
-                    teacher_workload -= group_classes[1]
-                    subjects.remove(subject)
-                    i = 1
 
         return schedule
     
-    def is_available(classroom, time_slot, schedule):
-
-        for lesson in schedule:
-            if lesson["classroom"] == classroom and lesson["time_slot"] == time_slot:
-                return False 
-        return True
-
     
     if __name__ == "__main__":
         import random
