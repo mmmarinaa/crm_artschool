@@ -94,13 +94,14 @@ try:
 
                         day = random.choice(days)
 
-                                            # Проверка, свободен ли учитель в выбранное время
+                        # Проверка, свободен ли учитель в выбранное время
                         while not is_teacher_available(teacher[1], (day, time_slot), schedule):
                             if group[5] == 1:
                                 time_slot = random.choice(morning_time)
                             else:
                                 time_slot = random.choice(evening_time)
                             day = random.choice(days)
+                        
                         lesson = {
                             "teacher": teacher[1],
                             "subject": subject[1],
