@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import Tabs from "../components/Tabs";
+import { observer } from "mobx-react-lite";
 import InputSearch from "../components/InputSearch";
 import Clock from "../components/Clock";
 import Settings from "../components/Settings";
@@ -8,11 +8,39 @@ import Profile from "../components/Profile";
 import { IoExitOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
-import { LOGIN_ROUTE } from "../utils/consts";
+import { JOURNAL_ROUTE, LOGIN_ROUTE } from "../utils/consts";
+import ScheduleItem from "../components/ScheduleItem";
+import { fetchClasses } from "../http/journalAPI";
 
-function Journal() {
+const scheduleData = [
+  {
+    id: 1,
+    subject: "Живопись",
+    time: "9:00",
+    room: "101",
+    group: "Жу-02-23",
+  },
+  {
+    id: 2,
+    subject: "Скульптура",
+    time: "11:00",
+    room: "201",
+    group: "Жу-02-23",
+  },
+];
+
+const ClassesToday = observer(() => {
   const { user } = useContext(Context);
+  const { journal } = useContext(Context);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchClasses().then((data) => journal.setClasses(data));
+  }, []);
+
+  const handleItemClick = () => {
+    navigate(JOURNAL_ROUTE + "/1");
+  };
   const logout = () => {
     user.setUser({});
     user.setIsAuth(false);
@@ -36,10 +64,10 @@ function Journal() {
             </button>
           </div>
         </header>
-        <Tabs />
+        <ScheduleItem onClick={() => handleItemClick()} />
       </div>
     </div>
   );
-}
+});
 
-export default Journal;
+export default ClassesToday;

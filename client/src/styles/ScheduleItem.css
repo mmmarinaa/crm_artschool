@@ -1,0 +1,55 @@
+.schedule-page {
+  max-width: 500px;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-left: 5px solid #8885b8;
+  color: #393e46;
+  cursor: pointer;
+}
+.left-content {
+  flex-grow: 1;
+}
+
+.right-content {
+  text-align: right;
+}
+
+.time,
+.room {
+  justify-self: center;
+  padding-top: 5px; /* Выравниваем время и кабинет по центру колонки */
+}
+
+.content-schd {
+  margin: 0 20px; /* Оставим отступы между предметом и временем, и группой */
+}
+
+.subject {
+  font-weight: bold;
+}
+
+.room {
+  font-size: 18px;
+}
+.time,
+.room,
+.group {
+  margin-top: 5px;
+  color: #666666;
+}
+
+.group {
+  font-style: italic;
+  font-size: 14px;
+  color: #8885b8;
+}

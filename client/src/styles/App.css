@@ -57,10 +57,14 @@ header {
 .exit {
   color: #7b7b7c;
   text-decoration: none;
+  outline: none; /* Для синий ободки */
+  border: 0;
+  background: transparent;
   margin: 0 20px 0 10px;
 }
 
 .exit .icon:hover {
+  cursor: pointer;
   color: #393e46;
 }
 .exit .icon {

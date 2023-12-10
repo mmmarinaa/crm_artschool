@@ -7,31 +7,12 @@ import { GoPencil } from "react-icons/go";
 import { BsCircleFill } from "react-icons/bs";
 
 const Table = () => {
+  const name = "attendance";
   return (
     <table>
       <thead>
         <tr>
           <th>ФИО</th>
-          <th>
-            <p>пн, 1.05</p>
-            <p>13:45</p>
-          </th>
-          <th>
-            <p>пн, 1.05</p>
-            <p>13:45</p>
-          </th>
-          <th>
-            <p>пн, 1.05</p>
-            <p>13:45</p>
-          </th>
-          <th>
-            <p>пн, 1.05</p>
-            <p>13:45</p>
-          </th>
-          <th>
-            <p>пн, 1.05</p>
-            <p>13:45</p>
-          </th>
           <th>
             <p>пн, 1.05</p>
             <p>13:45</p>
@@ -42,106 +23,31 @@ const Table = () => {
         <tr>
           <td>Иванова Татьяна</td>
           <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
+            <DropDownList name={name} />
           </td>
         </tr>
         <tr>
           <td>Казаков Максим</td>
           <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
+            <DropDownList name={name} />
           </td>
         </tr>
         <tr>
           <td>Кириллова Дарья</td>
           <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
+            <DropDownList name={name} />
           </td>
         </tr>
         <tr>
           <td>Осипова Анастасия</td>
           <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
+            <DropDownList name={name} />
           </td>
         </tr>
         <tr>
           <td>Сидоров Алексей</td>
           <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
-          </td>
-          <td>
-            <DropDownList />
+            <DropDownList name={name} />
           </td>
         </tr>
       </tbody>

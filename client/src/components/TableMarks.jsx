@@ -15,10 +15,6 @@ const TableMarks = () => {
             <p>пн, 1.05</p>
             <p>13:45</p>
           </th>
-          <th>
-            <p>пн, 1.05</p>
-            <p>13:45</p>
-          </th>
         </tr>
       </thead>
       <tbody>
@@ -27,27 +23,30 @@ const TableMarks = () => {
           <td>
             <DropDownList />
           </td>
-          <td></td>
         </tr>
         <tr>
           <td>Казаков Максим</td>
-          <td></td>
-          <td></td>
+          <td>
+            <DropDownList />
+          </td>
         </tr>
         <tr>
           <td>Кириллова Дарья</td>
-          <td></td>
-          <td></td>
+          <td>
+            <DropDownList />
+          </td>
         </tr>
         <tr>
           <td>Осипова Анастасия</td>
-          <td></td>
-          <td></td>
+          <td>
+            <DropDownList />
+          </td>
         </tr>
         <tr>
           <td>Сидоров Алексей</td>
-          <td></td>
-          <td></td>
+          <td>
+            <DropDownList />
+          </td>
         </tr>
       </tbody>
     </table>
