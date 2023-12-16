@@ -12,23 +12,6 @@ import { JOURNAL_ROUTE, LOGIN_ROUTE } from "../utils/consts";
 import ScheduleItem from "../components/ScheduleItem";
 import { fetchClasses } from "../http/journalAPI";
 
-const scheduleData = [
-  {
-    id: 1,
-    subject: "Живопись",
-    time: "9:00",
-    room: "101",
-    group: "Жу-02-23",
-  },
-  {
-    id: 2,
-    subject: "Скульптура",
-    time: "11:00",
-    room: "201",
-    group: "Жу-02-23",
-  },
-];
-
 const ClassesToday = observer(() => {
   const { user } = useContext(Context);
   const { journal } = useContext(Context);
@@ -52,8 +35,7 @@ const ClassesToday = observer(() => {
       <div className="content_page">
         <header>
           <div className="left_content">
-            <h3>Журнал</h3>
-            <InputSearch />
+            <h3>Расписание на сегодня</h3>
           </div>
           <div className="right_content">
             <Clock />
@@ -64,7 +46,16 @@ const ClassesToday = observer(() => {
             </button>
           </div>
         </header>
-        <ScheduleItem onClick={() => handleItemClick()} />
+        {journal.classes.map((item) => (
+          <ScheduleItem
+            onClick={() => handleItemClick()}
+            key={item.id}
+            time={item.time.hours}
+            subject={item.subject.name}
+            group={item.group.name}
+            room={item.room.number}
+          />
+        ))}
       </div>
     </div>
   );

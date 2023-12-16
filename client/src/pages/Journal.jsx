@@ -12,7 +12,9 @@ import { LOGIN_ROUTE } from "../utils/consts";
 
 function Journal() {
   const { user } = useContext(Context);
+
   const navigate = useNavigate();
+
   const logout = () => {
     user.setUser({});
     user.setIsAuth(false);

@@ -4,6 +4,7 @@ import App from "./App";
 import Store from "./store/store";
 import UserStore from "./store/UserStore";
 import JournalStore from "./store/JournalStore";
+import ScheduleStore from "./store/ScheduleStore";
 
 export const Context = createContext(null);
 
@@ -14,6 +15,7 @@ root.render(
     value={{
       user: new UserStore(),
       journal: new JournalStore(),
+      schedule: new ScheduleStore(),
     }}
   >
     <App />

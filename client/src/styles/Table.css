@@ -1,4 +1,4 @@
-table {
+.my-table {
   border-radius: 10px;
   border-spacing: 0;
   text-align: center;
@@ -9,7 +9,7 @@ th {
   font-weight: 400;
   padding: 20px 20px;
 }
-p {
+.my-table p {
   font-weight: 600;
 }
 th,
@@ -19,7 +19,7 @@ td {
   border-color: white;
 }
 
-td:first-child {
+.my-table td:first-child {
   text-align: left;
   /* font-weight: 600; */
 }
@@ -33,29 +33,29 @@ thead tr:first-child th:last-child {
 th:last-child {
   border-right: none;
 }
-td {
+.my-table td {
   height: 50px;
   padding: 0 20px;
   text-align: center; /* Выравнивание по центру по горизонтали */
   vertical-align: middle;
 }
-tr:nth-child(odd) {
+.my-table tr:nth-child(odd) {
   background: #f6f6f8;
 }
-tr:nth-child(even) {
+.my-table tr:nth-child(even) {
   background: #f3f2ff;
 }
-tr > td:not(:first-child) {
+.my-table tr > td:not(:first-child) {
   padding: 0;
   /* Ваши стили для всех столбцов, кроме первого */
 }
-tr:last-child td:first-child {
+.my-table tr:last-child td:first-child {
   border-radius: 0 0 0 10px;
 }
-tr:last-child td:last-child {
+.my-table tr:last-child td:last-child {
   border-radius: 0 0 10px 0;
 }
-tr td:last-child {
+.my-table tr td:last-child {
   border-right: none;
 }
 .note {

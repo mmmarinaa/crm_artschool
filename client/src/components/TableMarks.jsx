@@ -6,13 +6,22 @@ import { GoPencil } from "react-icons/go";
 import { BsCircleFill } from "react-icons/bs";
 
 const TableMarks = () => {
+  const getCurrentDayAndDate = () => {
+    const daysOfWeek = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+    const currentDate = new Date();
+    const dayOfWeek = daysOfWeek[currentDate.getDay()];
+    const date = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Месяцы в JavaScript начинаются с 0
+
+    return `${dayOfWeek}, ${date}.${month}`;
+  };
   return (
-    <table>
+    <table className="my-table">
       <thead>
         <tr>
           <th>ФИО</th>
           <th>
-            <p>пн, 1.05</p>
+            <p>{getCurrentDayAndDate()}</p>
             <p>13:45</p>
           </th>
         </tr>

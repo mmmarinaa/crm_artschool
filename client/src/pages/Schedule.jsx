@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import Tabs from "../components/Tabs";
 import InputSearch from "../components/InputSearch";
 import Clock from "../components/Clock";
 import Settings from "../components/Settings";
 import Profile from "../components/Profile";
 import { IoExitOutline } from "react-icons/io5";
+import { Context } from "../index";
+import ScheduleItem from "../components/ScheduleItem";
+import { fetchSchedule } from "../http/scheduleAPI";
+import { LOGIN_ROUTE, JOURNAL_ROUTE } from "../utils/consts";
+import { useNavigate } from "react-router-dom";
+import ScheduleTable from "../components/ScheduleTable";
+
 function Schedule() {
+  const { user } = useContext(Context);
+  const { schedule } = useContext(Context);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchSchedule().then((data) => schedule.setSchedule(data));
+  }, []);
+
+  const handleItemClick = () => {
+    navigate(JOURNAL_ROUTE + "/1");
+  };
+  const logout = () => {
+    user.setUser({});
+    user.setIsAuth(false);
+    navigate(LOGIN_ROUTE);
+  };
   return (
     <div>
       <Sidebar />
@@ -20,11 +42,21 @@ function Schedule() {
             <Clock />
             <Settings />
             <Profile />
-            <a href="" className="exit" title="Выйти">
+            <button onClick={() => logout()} className="exit" title="Выйти">
               <IoExitOutline className="icon" />
-            </a>
+            </button>
           </div>
         </header>
+        <ScheduleTable />
+        {schedule.schedule.map((item) => (
+          <ScheduleItem
+            onClick={() => handleItemClick()}
+            time={item.time_slot[1]}
+            subject={item.subject}
+            group={item.group}
+            room={item.classroom[0]}
+          />
+        ))}
       </div>
     </div>
   );

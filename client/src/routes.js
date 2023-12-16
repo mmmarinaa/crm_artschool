@@ -1,7 +1,14 @@
 import Auth from "./pages/Auth";
 import ClassesToday from "./pages/ClassesToday";
 import Journal from "./pages/Journal";
-import { JOURNAL_ROUTE, LOGIN_ROUTE } from "./utils/consts";
+import Schedule from "./pages/Schedule";
+import Reports from "./pages/Reports";
+import {
+  JOURNAL_ROUTE,
+  LOGIN_ROUTE,
+  REPORTS_ROUTE,
+  SCHEDULE_ROUTE,
+} from "./utils/consts";
 
 export const authRoutes = [
   {
@@ -11,6 +18,14 @@ export const authRoutes = [
   {
     path: JOURNAL_ROUTE + "/:id",
     Component: <Journal />,
+  },
+  {
+    path: SCHEDULE_ROUTE,
+    Component: <Schedule />,
+  },
+  {
+    path: REPORTS_ROUTE,
+    Component: <Reports />,
   },
 ];
 

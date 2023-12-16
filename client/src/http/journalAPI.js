@@ -1,5 +1,4 @@
-import { $authHost, $host } from "./index";
-import { jwtDecode } from "jwt-decode";
+import { $authHost } from "./index";
 
 export const fetchClasses = async () => {
   const { data } = await $authHost.get("api/journal");
@@ -7,6 +6,6 @@ export const fetchClasses = async () => {
 };
 
 export const fetchOneClass = async (id) => {
-  const { data } = await $authHost.get("api/journal" + id);
+  const { data } = await $authHost.get("api/journal/" + id);
   return data;
 };

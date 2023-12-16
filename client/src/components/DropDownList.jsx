@@ -5,7 +5,8 @@ function DropDownList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [previousDropdown, setPreviousDropdown] = useState(null);
-  const { name } = props;
+  const { name, buttonText, isDropdownVisible, selectedValue, onSelect } =
+    props;
   let options = [];
 
   if (name === "attendance") {
@@ -26,8 +27,11 @@ function DropDownList(props) {
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-    setPreviousDropdown(name);
+    // Проверка условия перед открытием/закрытием выпадающего списка
+    if (isDropdownVisible) {
+      setIsOpen(!isOpen);
+      setPreviousDropdown(name);
+    }
   };
 
   const handleSelectOption = (option) => {
@@ -59,7 +63,7 @@ function DropDownList(props) {
 
   return (
     <div
-      className={`dropdown ${isOpen ? "show" : ""}`}
+      className={`dropdown ${isOpen && isDropdownVisible ? "show" : ""}`}
       onClick={toggleDropdown}
       ref={dropdownRef}
     >
